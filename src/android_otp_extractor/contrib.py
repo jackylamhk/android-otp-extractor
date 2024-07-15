@@ -164,7 +164,7 @@ def display_qr_codes(accounts: list[OTPAccount], prepend_issuer: bool = False):
             new QRious({
                 element: image,
                 value: account,
-                size: 250
+                size: 250,
             })
 
             image.removeAttribute('width')
@@ -182,7 +182,7 @@ def display_qr_codes(accounts: list[OTPAccount], prepend_issuer: bool = False):
 
                 code.textContent = window.otplib.hotp.generate(
                     secret,
-                    parseInt(params.get('counter'), 10)
+                    parseInt(params.get('counter'), 10),
                 )
 
                 left.textContent = `(counter: ${params.get('counter')})`
@@ -214,7 +214,7 @@ def display_qr_codes(accounts: list[OTPAccount], prepend_issuer: bool = False):
         }
     </script>
 </body>
-    """ % json.dumps(
+""" % json.dumps(
         sorted([a.as_uri(prepend_issuer) for a in accounts]), indent=12
     ).replace(
         "]", "        ]"
